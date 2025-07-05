@@ -1,15 +1,14 @@
-# syriausdt
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>نظام تحويل USDT في سورية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #0047AB;
+            --primary-dark: #003380;
             --secondary: #1a73e8;
             --accent: #0d8bf2;
             --light: #f5f9ff;
@@ -19,9 +18,9 @@
             --danger: #dc3545;
             --gray: #6c757d;
             --light-gray: #e9ecef;
-            --border-radius: 12px;
-            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --border-radius: 8px;
+            --box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            --transition: all 0.2s ease;
         }
 
         * {
@@ -32,48 +31,51 @@
         }
 
         body {
-            background: linear-gradient(135deg, #f5f9ff 0%, #e6f0ff 100%);
+            background: linear-gradient(135deg, #e6f0ff 0%, #f0f7ff 100%);
             color: var(--dark);
             min-height: 100vh;
-            padding: 20px;
-            line-height: 1.6;
+            padding: 10px;
+            line-height: 1.5;
+            font-size: 16px;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 100%;
             margin: 0 auto;
+            padding: 0 5px;
         }
 
         header {
             text-align: center;
-            padding: 20px 0;
-            margin-bottom: 30px;
+            padding: 15px 0;
+            margin-bottom: 15px;
         }
 
         .logo {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 15px;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .logo i {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             color: var(--primary);
         }
 
         .logo h1 {
-            font-size: 2.2rem;
+            font-size: 1.5rem;
             color: var(--primary);
             font-weight: 700;
+            line-height: 1.3;
         }
 
         .subtitle {
             color: var(--secondary);
-            font-size: 1.2rem;
+            font-size: 0.95rem;
             font-weight: 500;
-            max-width: 600px;
+            max-width: 100%;
             margin: 0 auto;
         }
 
@@ -81,40 +83,36 @@
             background: white;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
-            padding: 30px;
-            margin-bottom: 25px;
+            padding: 20px 15px;
+            margin-bottom: 15px;
             transition: var(--transition);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         .card-title {
             color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
             border-bottom: 2px solid var(--light-gray);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .card-title i {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 600;
             color: var(--dark);
+            font-size: 0.95rem;
         }
 
         .required::after {
@@ -124,10 +122,10 @@
 
         input, select, textarea {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             border: 2px solid var(--light-gray);
             border-radius: var(--border-radius);
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: var(--transition);
         }
 
@@ -138,23 +136,23 @@
         }
 
         .btn {
-            display: inline-block;
-            padding: 14px 28px;
+            display: block;
+            padding: 13px 20px;
             background: var(--primary);
             color: white;
             border: none;
             border-radius: var(--border-radius);
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
             text-align: center;
             width: 100%;
+            margin-top: 10px;
         }
 
         .btn:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
+            background: var(--primary-dark);
         }
 
         .btn-secondary {
@@ -167,19 +165,20 @@
 
         .payment-methods {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 15px 0;
         }
 
         .method-card {
             background: var(--light);
             border: 2px solid var(--light-gray);
             border-radius: var(--border-radius);
-            padding: 15px;
+            padding: 12px;
             text-align: center;
             cursor: pointer;
             transition: var(--transition);
+            font-size: 0.9rem;
         }
 
         .method-card:hover, .method-card.selected {
@@ -188,9 +187,9 @@
         }
 
         .method-card i {
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .copy-field {
@@ -198,24 +197,27 @@
             background: var(--light);
             border-radius: var(--border-radius);
             overflow: hidden;
-            margin: 10px 0;
+            margin: 8px 0;
         }
 
         .copy-field input {
             border: none;
             background: transparent;
             flex: 1;
+            padding: 10px 12px;
+            font-size: 0.9rem;
         }
 
         .copy-btn {
             background: var(--light-gray);
             border: none;
-            padding: 0 15px;
+            padding: 0 12px;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
+            min-width: 50px;
         }
 
         .copy-btn:hover {
@@ -226,25 +228,27 @@
         .summary-item {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
+            padding: 10px 0;
             border-bottom: 1px dashed var(--light-gray);
+            font-size: 0.95rem;
         }
 
         .summary-total {
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--primary);
-            padding-top: 15px;
-            margin-top: 10px;
+            padding-top: 12px;
+            margin-top: 8px;
             border-top: 2px solid var(--light-gray);
         }
 
         .note-box {
             background: #fff8e1;
             border-left: 4px solid var(--warning);
-            padding: 15px;
+            padding: 12px;
             border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            margin: 20px 0;
+            margin: 15px 0;
+            font-size: 0.9rem;
         }
 
         .hidden {
@@ -254,20 +258,21 @@
         .step-indicator {
             display: flex;
             justify-content: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .step {
-            width: 35px;
-            height: 35px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             background: var(--light-gray);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 10px;
+            margin: 0 5px;
             font-weight: 700;
             position: relative;
+            font-size: 0.9rem;
         }
 
         .step.active {
@@ -279,8 +284,8 @@
             content: '';
             position: absolute;
             top: 50%;
-            left: calc(100% + 5px);
-            width: 40px;
+            left: calc(100% + 3px);
+            width: 20px;
             height: 2px;
             background: var(--light-gray);
             transform: translateY(-50%);
@@ -288,34 +293,54 @@
 
         .flex-buttons {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 15px;
         }
 
         .flex-buttons .btn {
             width: auto;
             flex: 1;
+            padding: 12px 10px;
+            font-size: 0.95rem;
         }
 
-        @media (max-width: 768px) {
+        .summary-section {
+            margin-bottom: 20px;
+        }
+
+        .summary-section h3 {
+            margin-bottom: 12px;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--success);
+            color: white;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        @media (min-width: 480px) {
             .container {
-                padding: 10px;
-            }
-            
-            .card {
-                padding: 20px;
-            }
-            
-            .logo h1 {
-                font-size: 1.8rem;
+                max-width: 95%;
             }
             
             .payment-methods {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .flex-buttons {
-                flex-direction: column;
+                grid-template-columns: repeat(4, 1fr);
             }
         }
     </style>
@@ -324,10 +349,10 @@
     <div class="container">
         <header>
             <div class="logo">
-                <i class="fas fa-exchange-alt"></i>
+                <i class="fas fa-coins"></i>
                 <h1>نظام تحويل USDT في سورية</h1>
             </div>
-            <p class="subtitle">خدمة آمنة وسريعة لتحويل العملات الرقمية مع دعم جميع وسائل الدفع السورية</p>
+            <p class="subtitle">خدمة تحويل آمنة وسريعة مع دعم جميع وسائل الدفع السورية</p>
         </header>
 
         <div class="step-indicator">
@@ -341,7 +366,7 @@
             
             <div class="form-group">
                 <label for="fullname" class="required">الاسم الثلاثي</label>
-                <input type="text" id="fullname" placeholder="الاسم الكامل كما في الوثائق الرسمية">
+                <input type="text" id="fullname" placeholder="الاسم الكامل">
             </div>
             
             <div class="form-group">
@@ -358,7 +383,7 @@
         </div>
 
         <div class="card hidden" id="step2">
-            <h2 class="card-title"><i class="fas fa-shopping-cart"></i> تفاصيل العملية</h2>
+            <h2 class="card-title"><i class="fas fa-exchange-alt"></i> تفاصيل العملية</h2>
             
             <div class="form-group">
                 <label for="operationType" class="required">نوع العملية</label>
@@ -373,7 +398,7 @@
             <div id="buySection" class="hidden">
                 <div class="form-group">
                     <label for="buyAmount" class="required">الكمية المطلوبة (USDT)</label>
-                    <input type="number" id="buyAmount" placeholder="أدخل الكمية التي ترغب بشرائها">
+                    <input type="number" id="buyAmount" placeholder="أدخل الكمية">
                 </div>
                 
                 <div class="form-group">
@@ -393,7 +418,7 @@
                 
                 <div class="form-group">
                     <label for="buyNotes">ملاحظات (اختياري)</label>
-                    <textarea id="buyNotes" rows="3" placeholder="أي ملاحظات أو معلومات إضافية"></textarea>
+                    <textarea id="buyNotes" rows="2" placeholder="أي ملاحظات أو معلومات إضافية"></textarea>
                 </div>
                 
                 <div class="form-group">
@@ -424,7 +449,7 @@
             <div id="sellSection" class="hidden">
                 <div class="form-group">
                     <label for="sellAmount" class="required">الكمية المعروضة (USDT)</label>
-                    <input type="number" id="sellAmount" placeholder="أدخل الكمية التي ترغب ببيعها">
+                    <input type="number" id="sellAmount" placeholder="أدخل الكمية">
                 </div>
                 
                 <div class="form-group">
@@ -469,7 +494,7 @@
                 
                 <div class="form-group">
                     <label for="sellNotes">ملاحظات (اختياري)</label>
-                    <textarea id="sellNotes" rows="3" placeholder="أي ملاحظات أو معلومات إضافية"></textarea>
+                    <textarea id="sellNotes" rows="2" placeholder="أي ملاحظات أو معلومات إضافية"></textarea>
                 </div>
             </div>
             
@@ -480,7 +505,7 @@
         </div>
 
         <div class="card hidden" id="step3">
-            <h2 class="card-title"><i class="fas fa-file-invoice-dollar"></i> تفاصيل الطلب</h2>
+            <h2 class="card-title"><i class="fas fa-file-invoice"></i> تفاصيل الطلب</h2>
             
             <div id="reviewContent"></div>
             
@@ -490,10 +515,12 @@
             
             <div class="flex-buttons">
                 <button class="btn btn-secondary" onclick="prevStep(2)"><i class="fas fa-arrow-right"></i> السابق</button>
-                <button class="btn btn-success" onclick="submitOrder()"><i class="fas fa-paper-plane"></i> تأكيد وإرسال الطلب</button>
+                <button class="btn btn-success" onclick="submitOrder()"><i class="fas fa-check-circle"></i> تأكيد وإرسال</button>
             </div>
         </div>
     </div>
+    
+    <div id="toast" class="toast">تم النسخ إلى الحافظة!</div>
 
     <script>
         // متغيرات النظام
@@ -515,6 +542,7 @@
         const sellSection = document.getElementById('sellSection');
         const receiveDetails = document.getElementById('receiveDetails');
         const reviewContent = document.getElementById('reviewContent');
+        const toast = document.getElementById('toast');
         
         // متغيرات البيانات
         let orderData = {
@@ -541,6 +569,9 @@
             if (step === 3) {
                 fillReviewContent();
             }
+            
+            // التمرير إلى أعلى الصفحة
+            window.scrollTo(0, 0);
         }
         
         function prevStep(step) {
@@ -565,369 +596,4 @@
         
         // التحقق من صحة البيانات في الخطوة 2
         function validateStep2() {
-            const opType = operationType.value;
-            
-            if (!opType) {
-                alert('الرجاء اختيار نوع العملية (شراء أو بيع)');
-                return false;
-            }
-            
-            if (opType === 'buy') {
-                const amount = document.getElementById('buyAmount').value;
-                const network = document.getElementById('buyNetwork').value;
-                const address = document.getElementById('buyAddress').value.trim();
-                const method = document.getElementById('paymentMethod').value;
-                
-                if (!amount || !address || !method) {
-                    alert('الرجاء ملء جميع الحقول المطلوبة في قسم الشراء');
-                    return false;
-                }
-                
-                orderData.step2 = {
-                    type: 'buy',
-                    amount: parseFloat(amount),
-                    network,
-                    address,
-                    paymentMethod: method,
-                    notes: document.getElementById('buyNotes').value.trim()
-                };
-            } else {
-                const amount = document.getElementById('sellAmount').value;
-                const method = document.getElementById('receiveMethod').value;
-                const accountInfo = document.getElementById('accountInfo')?.value.trim() || '';
-                const network = document.getElementById('sellNetwork').value;
-                
-                if (!amount || !method || (method && !accountInfo)) {
-                    alert('الرجاء ملء جميع الحروف المطلوبة في قسم البيع');
-                    return false;
-                }
-                
-                orderData.step2 = {
-                    type: 'sell',
-                    amount: parseFloat(amount),
-                    receiveMethod: method,
-                    accountInfo,
-                    network,
-                    notes: document.getElementById('sellNotes').value.trim()
-                };
-            }
-            
-            return true;
-        }
-        
-        // تبديل تفاصيل العملية بناءً على الاختيار
-        function toggleOperationDetails() {
-            const opType = operationType.value;
-            
-            buySection.classList.add('hidden');
-            sellSection.classList.add('hidden');
-            
-            if (opType === 'buy') {
-                buySection.classList.remove('hidden');
-            } else if (opType === 'sell') {
-                sellSection.classList.remove('hidden');
-            }
-        }
-        
-        // اختيار طريقة الدفع (للشراء)
-        function selectPaymentMethod(element, method) {
-            // إزالة التحديد من جميع العناصر
-            document.querySelectorAll('#step2 .method-card').forEach(el => {
-                el.classList.remove('selected');
-            });
-            
-            // تحديد العنصر المختار
-            element.classList.add('selected');
-            document.getElementById('paymentMethod').value = method;
-        }
-        
-        // اختيار طريقة الاستلام (للبيع)
-        function selectReceiveMethod(element, method) {
-            // إزالة التحديد من جميع العناصر
-            document.querySelectorAll('#step2 .method-card').forEach(el => {
-                el.classList.remove('selected');
-            });
-            
-            // تحديد العنصر المختار
-            element.classList.add('selected');
-            document.getElementById('receiveMethod').value = method;
-            
-            // إظهار حقل تفاصيل الحساب
-            receiveDetails.classList.remove('hidden');
-        }
-        
-        // ملء محتوى مراجعة الطلب
-        function fillReviewContent() {
-            const {step1, step2} = orderData;
-            let content = '';
-            
-            // معلومات العميل
-            content += `<h3 style="margin-bottom: 15px; color: var(--primary);">معلومات العميل</h3>`;
-            content += `<div class="summary-item"><span>الاسم:</span><span>${step1.fullname}</span></div>`;
-            content += `<div class="summary-item"><span>الهاتف:</span><span>${step1.phone}</span></div>`;
-            content += `<div class="summary-item"><span>المدينة:</span><span>${step1.city}</span></div>`;
-            
-            content += `<div style="height: 20px;"></div>`;
-            
-            // تفاصيل العملية
-            if (step2.type === 'buy') {
-                content += `<h3 style="margin-bottom: 15px; color: var(--primary);">تفاصيل الشراء</h3>`;
-                content += `<div class="summary-item"><span>الكمية:</span><span>${step2.amount} USDT</span></div>`;
-                content += `<div class="summary-item"><span>شبكة التحويل:</span><span>${getNetworkName(step2.network)}</span></div>`;
-                content += `<div class="summary-item"><span>عنوان المحفظة:</span><span>${step2.address}</span></div>`;
-                content += `<div class="summary-item"><span>طريقة الدفع:</span><span>${getPaymentMethodName(step2.paymentMethod)}</span></div>`;
-                
-                // معلومات الدفع
-                content += `<div style="height: 20px;"></div>`;
-                content += `<h3 style="margin-bottom: 15px; color: var(--primary);">معلومات الدفع</h3>`;
-                content += getPaymentDetails(step2.paymentMethod);
-                
-                // العمولة والتكلفة
-                const fees = calculateFees(step2.amount, step2.network);
-                content += `<div style="height: 20px;"></div>`;
-                content += `<h3 style="margin-bottom: 15px; color: var(--primary);">العمولة والتكلفة</h3>`;
-                content += `<div class="summary-item"><span>سعر الصرف:</span><span>1 USD = ${EXCHANGE_RATE.toLocaleString()} SYP</span></div>`;
-                content += `<div class="summary-item"><span>العمولة الثابتة:</span><span>${BASE_FEE} USD</span></div>`;
-                content += `<div class="summary-item"><span>عمولة النسبة (0.5%):</span><span>${fees.percentageFee.toFixed(2)} USD</span></div>`;
-                
-                if (step2.network === 'trc20') {
-                    content += `<div class="summary-item"><span>عمولة شبكة TRC20:</span><span>${TRC20_FEE} USD</span></div>`;
-                }
-                
-                content += `<div class="summary-item summary-total"><span>المبلغ الإجمالي بالدولار:</span><span>${fees.totalUSD.toFixed(2)} USD</span></div>`;
-                content += `<div class="summary-item summary-total"><span>المبلغ الإجمالي بالليرة السورية:</span><span>${fees.totalSYP.toLocaleString()} SYP</span></div>`;
-                
-            } else {
-                content += `<h3 style="margin-bottom: 15px; color: var(--primary);">تفاصيل البيع</h3>`;
-                content += `<div class="summary-item"><span>الكمية:</span><span>${step2.amount} USDT</span></div>`;
-                content += `<div class="summary-item"><span>طريقة الاستلام:</span><span>${getPaymentMethodName(step2.receiveMethod)}</span></div>`;
-                content += `<div class="summary-item"><span>تفاصيل الحساب:</span><span>${step2.accountInfo}</span></div>`;
-                content += `<div class="summary-item"><span>شبكة التحويل:</span><span>${getNetworkName(step2.network)}</span></div>`;
-                
-                // معلومات المحفظة
-                content += `<div style="height: 20px;"></div>`;
-                content += `<h3 style="margin-bottom: 15px; color: var(--primary);">معلومات المحفظة</h3>`;
-                content += getWalletDetails(step2.network);
-                
-                // العمولة والمبلغ المستحق
-                const fees = calculateFees(step2.amount, step2.network);
-                content += `<div style="height: 20px;"></div>`;
-                content += `<h3 style="margin-bottom: 15px; color: var(--primary);">العمولة والمبلغ المستحق</h3>`;
-                content += `<div class="summary-item"><span>سعر الصرف:</span><span>1 USD = ${EXCHANGE_RATE.toLocaleString()} SYP</span></div>`;
-                content += `<div class="summary-item"><span>العمولة الثابتة:</span><span>${BASE_FEE} USD</span></div>`;
-                content += `<div class="summary-item"><span>عمولة النسبة (0.5%):</span><span>${fees.percentageFee.toFixed(2)} USD</span></div>`;
-                
-                if (step2.network === 'trc20') {
-                    content += `<div class="summary-item"><span>عمولة شبكة TRC20:</span><span>${TRC20_FEE} USD</span></div>`;
-                }
-                
-                content += `<div class="summary-item summary-total"><span>المبلغ المستحق بالدولار:</span><span>${fees.receivedUSD.toFixed(2)} USD</span></div>`;
-                content += `<div class="summary-item summary-total"><span>المبلغ المستحق بالليرة السورية:</span><span>${fees.receivedSYP.toLocaleString()} SYP</span></div>`;
-            }
-            
-            // الملاحظات
-            if (step2.notes) {
-                content += `<div style="height: 20px;"></div>`;
-                content += `<h3 style="margin-bottom: 15px; color: var(--primary);">ملاحظات العميل</h3>`;
-                content += `<div class="summary-item"><span>${step2.notes}</span></div>`;
-            }
-            
-            reviewContent.innerHTML = content;
-            
-            // إضافة وظيفة النسخ للعناوين
-            addCopyFunctionality();
-        }
-        
-        // حساب العمولات والمبالغ
-        function calculateFees(amount, network) {
-            const percentageFee = amount * PERCENTAGE_FEE;
-            let networkFee = 0;
-            
-            if (network === 'trc20') {
-                networkFee = TRC20_FEE;
-            }
-            
-            const totalFees = BASE_FEE + percentageFee + networkFee;
-            
-            return {
-                percentageFee,
-                networkFee,
-                totalFees,
-                totalUSD: amount + totalFees,
-                totalSYP: (amount + totalFees) * EXCHANGE_RATE,
-                receivedUSD: amount - totalFees,
-                receivedSYP: (amount - totalFees) * EXCHANGE_RATE
-            };
-        }
-        
-        // الحصول على اسم الشبكة
-        function getNetworkName(network) {
-            const names = {
-                'bep20': 'BEP20',
-                'trc20': 'TRC20',
-                'erc20': 'ERC20',
-                'binance': 'Binance Pay'
-            };
-            return names[network] || network;
-        }
-        
-        // الحصول على اسم طريقة الدفع
-        function getPaymentMethodName(method) {
-            const names = {
-                'sham': 'شام كاش',
-                'bemo': 'بنك بيمو',
-                'syriatel': 'سيريتل كاش',
-                'harem': 'حوالة الهرم'
-            };
-            return names[method] || method;
-        }
-        
-        // الحصول على تفاصيل الدفع بناءً على الطريقة
-        function getPaymentDetails(method) {
-            let details = '';
-            
-            switch(method) {
-                case 'sham':
-                    details += `<div class="summary-item"><span>الاسم:</span><span>علي ابراهيم محمود</span></div>`;
-                    details += `<div class="summary-item"><span>عنوان المحفظة:</span><span>be456e0ea9392db4d68a7093ee317bc8</span></div>`;
-                    details += `<div class="summary-item"><span>رقم الحساب:</span><span>5991161126028260</span></div>`;
-                    break;
-                case 'syriatel':
-                    details += `<div class="summary-item"><span>الاسم:</span><span>علي ابراهيم محمود</span></div>`;
-                    details += `<div class="summary-item"><span>رقم الهاتف:</span><span>0934598967</span></div>`;
-                    break;
-                case 'harem':
-                    details += `<div class="summary-item"><span>الاسم:</span><span>علي ابراهيم محمود</span></div>`;
-                    details += `<div class="summary-item"><span>رقم الهاتف:</span><span>0934598967</span></div>`;
-                    details += `<div class="summary-item"><span>المدينة:</span><span>اللاذقية</span></div>`;
-                    break;
-                case 'bemo':
-                    details += `<div class="summary-item"><span>الاسم:</span><span>علي ابراهيم محمود</span></div>`;
-                    details += `<div class="summary-item"><span>رقم الحساب:</span><span>060104947910013000000</span></div>`;
-                    break;
-            }
-            
-            return details;
-        }
-        
-        // الحصول على تفاصيل المحفظة بناءً على الشبكة
-        function getWalletDetails(network) {
-            let details = '';
-            
-            switch(network) {
-                case 'bep20':
-                    details += `<div class="summary-item"><span>العنوان:</span><span>0x21802218d8d661d66F2C7959347a6382E1cc614F</span></div>`;
-                    break;
-                case 'trc20':
-                    details += `<div class="summary-item"><span>العنوان:</span><span>TD2LoErPRkVPBxDk72ZErtiyi6agirZQjX</span></div>`;
-                    break;
-                case 'erc20':
-                    details += `<div class="summary-item"><span>العنوان:</span><span>0x21802218d8d661d66F2C7959347a6382E1cc614F</span></div>`;
-                    break;
-                case 'binance':
-                    details += `<div class="summary-item"><span>رقم Binance Pay:</span><span>969755964</span></div>`;
-                    break;
-            }
-            
-            return details;
-        }
-        
-        // إضافة وظيفة النسخ للعناوين
-        function addCopyFunctionality() {
-            document.querySelectorAll('.summary-item span:last-child').forEach(span => {
-                span.style.cursor = 'pointer';
-                span.style.position = 'relative';
-                
-                span.onclick = function() {
-                    const text = this.textContent;
-                    navigator.clipboard.writeText(text);
-                    
-                    // إظهار إشعار النسخ
-                    const notification = document.createElement('div');
-                    notification.textContent = 'تم النسخ!';
-                    notification.style.position = 'absolute';
-                    notification.style.background = 'var(--success)';
-                    notification.style.color = 'white';
-                    notification.style.padding = '5px 10px';
-                    notification.style.borderRadius = '4px';
-                    notification.style.top = '-35px';
-                    notification.style.left = '50%';
-                    notification.style.transform = 'translateX(-50%)';
-                    notification.style.zIndex = '100';
-                    
-                    this.appendChild(notification);
-                    
-                    setTimeout(() => {
-                        notification.remove();
-                    }, 2000);
-                };
-            });
-        }
-        
-        // إرسال الطلب
-        function submitOrder() {
-            const {step1, step2} = orderData;
-            
-            // إنشاء محتوى البريد الإلكتروني
-            let subject = `طلب جديد: ${step2.type === 'buy' ? 'شراء' : 'بيع'} USDT`;
-            let body = `تفاصيل الطلب الجديد:\n\n`;
-            
-            body += `معلومات العميل:\n`;
-            body += `الاسم: ${step1.fullname}\n`;
-            body += `الهاتف: ${step1.phone}\n`;
-            body += `المدينة: ${step1.city}\n\n`;
-            
-            if (step2.type === 'buy') {
-                body += `نوع العملية: شراء USDT\n`;
-                body += `الكمية: ${step2.amount} USDT\n`;
-                body += `شبكة التحويل: ${getNetworkName(step2.network)}\n`;
-                body += `عنوان المحفظة: ${step2.address}\n`;
-                body += `طريقة الدفع: ${getPaymentMethodName(step2.paymentMethod)}\n`;
-            } else {
-                body += `نوع العملية: بيع USDT\n`;
-                body += `الكمية: ${step2.amount} USDT\n`;
-                body += `طريقة الاستلام: ${getPaymentMethodName(step2.receiveMethod)}\n`;
-                body += `تفاصيل الحساب: ${step2.accountInfo}\n`;
-                body += `شبكة التحويل: ${getNetworkName(step2.network)}\n`;
-            }
-            
-            // حساب العمولة
-            const fees = calculateFees(step2.amount, step2.network);
-            
-            body += `\nالعمولة:\n`;
-            body += `العمولة الثابتة: ${BASE_FEE} USD\n`;
-            body += `عمولة النسبة (0.5%): ${fees.percentageFee.toFixed(2)} USD\n`;
-            
-            if (step2.network === 'trc20') {
-                body += `عمولة شبكة TRC20: ${TRC20_FEE} USD\n`;
-            }
-            
-            if (step2.type === 'buy') {
-                body += `المبلغ الإجمالي بالدولار: ${fees.totalUSD.toFixed(2)} USD\n`;
-                body += `المبلغ الإجمالي بالليرة السورية: ${fees.totalSYP.toLocaleString()} SYP\n`;
-            } else {
-                body += `المبلغ المستحق بالدولار: ${fees.receivedUSD.toFixed(2)} USD\n`;
-                body += `المبلغ المستحق بالليرة السورية: ${fees.receivedSYP.toLocaleString()} SYP\n`;
-            }
-            
-            if (step2.notes) {
-                body += `\nملاحظات العميل: ${step2.notes}\n`;
-            }
-            
-            // إنشاء رابط البريد الإلكتروني
-            const mailtoLink = `mailto:alimahmoud001a@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            // فتح عميل البريد الإلكتروني
-            window.location.href = mailtoLink;
-            
-            // عرض رسالة نجاح
-            alert('تم إرسال طلبك بنجاح! سيتم التواصل معك قريباً لتأكيد العملية.');
-            
-            // إعادة تعيين النموذج
-            setTimeout(() => {
-                window.location.reload();
-            }, 3000);
-        }
-    </script>
-</body>
-</html>
+            const opType = operation
