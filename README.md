@@ -465,10 +465,6 @@
                     <span>عمولة ثابتة:</span>
                     <span id="summaryFixedFee">1 USD</span>
                 </div>
-                <div class="summary-item" id="networkFeeItem">
-                    <span>عمولة الشبكة (TRC20):</span>
-                    <span>2 USD</span>
-                </div>
                 <div class="summary-item">
                     <span>عمولة نسبية (0.5%):</span>
                     <span id="summaryPercentageFee">0 USD</span>
